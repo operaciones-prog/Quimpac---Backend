@@ -1,7 +1,7 @@
 # Usar imagen base de .NET 6.0
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
-EXPOSE $PORT
+EXPOSE 10000
 
 # Instalar curl para healthchecks
 RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*

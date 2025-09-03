@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: quimpac-backend
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: ASPNETCORE_URLS
+        value: http://0.0.0.0:10000
+      - key: PORT
+        value: 10000
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: JWT_ISSUER
+        value: quimpac-backend.onrender.com
+      - key: JWT_AUDIENCE
+        value: quimpac-frontend
+      - key: FRONTEND_URL
+        value: https://quimpac.vercel.app
+      - key: CORS_ADDITIONAL_ORIGINS
+        value: http://localhost:4200

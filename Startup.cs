@@ -171,9 +171,6 @@ namespace PROYEC_QUIMPAC
                 app.UseHsts();
             }
 
-            // Health check endpoint para Railway
-            app.MapHealthChecks("/health");
-
             // Habilitar Swagger en todos los ambientes excepto Production
             if (!env.IsProduction())
             {
@@ -202,6 +199,7 @@ namespace PROYEC_QUIMPAC
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHealthChecks("/health");
             });
         }
     }
